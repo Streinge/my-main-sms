@@ -4,7 +4,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Streinge\\MyMainSms\\": "src/"
+            "SalesRender\\Plugin\\Instance\\Chat\\": "src/"
         }
     },
     "authors": [
