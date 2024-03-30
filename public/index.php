@@ -25,12 +25,20 @@ $app->post('/special/send', function (Request $request, Response $response, $arg
     );
 
     var_dump($mainSmsResponseBodyArray);
-    if (!array_key_exists('errors', $mainSmsResponseBodyArray)) {
+    /*if (!array_key_exists('errors', $mainSmsResponseBodyArray)) {
         return $response->withStatus(202);
     } else {
         return $response->withStatus(405);
-    }
-
+    }*/
+    return $response;
+});
+$app->get('/special/send', function (Request $request, Response $response, $args) {
+    $query = $request->getQueryParams();
+    $mainSmailApi = new MainSmsApi($query['apikey']);
+    $status = $mainSmailApi->getStatusEmailbyId($query['id']);
+    var_dump($status);
+    echo "<h1>Статус: $status</h1>";
+    return $response;
 });
 
 $app->get('/', function (Request $request, Response $response, $args) {
